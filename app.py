@@ -44,6 +44,19 @@ def home():
     """
     return redirect(url_for("register"))
 
+@app.route("/about")
+def about():
+    """
+    Displays a simple About page explaining the purpose of the application.
+    This route was added to demonstrate version control using Git.
+    """
+    return """
+    <h1>About This App</h1>
+    <p>This Flask application allows users to register, view, and update profiles.</p>
+    <p>This page was added as a small version control update.</p>
+    <a href="/register">Back to Registration</a>
+    """
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """
@@ -129,6 +142,7 @@ def profile(user_id):
         return redirect(url_for("users"))
 
     return render_template("profile.html", user=user)
+
 
 @app.route("/update/<int:user_id>", methods=["GET", "POST"])
 def update(user_id):
